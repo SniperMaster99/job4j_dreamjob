@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Post {
     private int id;
     private String name;
-    String description;
-    String date;
+    private String description;
+    private String date;
 
     public Post(int id, String name, String description, String date) {
         this.id = id;
@@ -49,8 +49,12 @@ public class Post {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Post post = (Post) o;
         return id == post.id;
     }
