@@ -6,13 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PostStore {
     private static final PostStore INST = new PostStore();
-
+    private static int count = 0;
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private PostStore() {
-        posts.put(1, new Post(1, "Junior Java Job", "Most comfortable", "19-01-2021"));
-        posts.put(2, new Post(2, "Middle Java Job", "Most charisma", "10-05-2021"));
-        posts.put(3, new Post(3, "Senior Java Job", "Most skill", "14-04-2021"));
     }
 
     public static PostStore instOf() {
@@ -22,4 +19,23 @@ public class PostStore {
     public Collection<Post> findAll() {
         return posts.values();
     }
+
+    public void create(Post post) {
+        posts.put(count++, post);
+    }
+
+    public Post findById(int id) {
+        Post result = new Post();
+        for (Post post : posts.values()) {
+            if (post.getId() == id) {
+                result = post;
+            }
+        }
+        return result;
+    }
+
+    public void update(Post post) {
+        posts.put(post.getId(), post);
+    }
+
 }

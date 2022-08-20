@@ -1,25 +1,23 @@
 package ru.job4j.dream.model;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class Post {
+public class Candidate {
     private int id;
     private String name;
-    private String description;
+    private String desc;
     private String date;
 
-    public Post(int id, String name, String description, String date) {
+    public Candidate(int id, String name, String desc, String date) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.desc = desc;
         this.date = date;
     }
 
-    public Post() { }
-
-    public Post(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Candidate() {
     }
 
     public int getId() {
@@ -38,6 +36,22 @@ public class Post {
         this.name = name;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -46,8 +60,8 @@ public class Post {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Post post = (Post) o;
-        return id == post.id;
+        Candidate candidate = (Candidate) o;
+        return id == candidate.id;
     }
 
     @Override
