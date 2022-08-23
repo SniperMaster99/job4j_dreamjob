@@ -1,12 +1,15 @@
-package ru.job4j.dream.model;
+package ru.job4j.dream.store;
+
+import ru.job4j.dream.model.Post;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PostStore {
     private static final PostStore INST = new PostStore();
-    private static int count = 0;
+    private static AtomicInteger count = new AtomicInteger(0);
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private PostStore() {
@@ -21,21 +24,15 @@ public class PostStore {
     }
 
     public void create(Post post) {
-        posts.put(count++, post);
+        posts.putIfAbsent(count.incrementAndGet(), post);
     }
 
     public Post findById(int id) {
-        Post result = new Post();
-        for (Post post : posts.values()) {
-            if (post.getId() == id) {
-                result = post;
-            }
-        }
-        return result;
+        return posts.get(id);
     }
 
     public void update(Post post) {
-        posts.put(post.getId(), post);
+        posts.replace(post.getId(), post);
     }
 
 }

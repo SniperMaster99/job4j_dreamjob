@@ -1,12 +1,15 @@
-package ru.job4j.dream.model;
+package ru.job4j.dream.store;
+
+import ru.job4j.dream.model.Candidate;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
-    private static int count = 0;
+    private static AtomicInteger count = new AtomicInteger(0);
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
@@ -22,20 +25,14 @@ public class CandidateStore {
     }
 
     public void create(Candidate candidate) {
-        candidates.put(count++, candidate);
+        candidates.putIfAbsent(count.incrementAndGet(), candidate);
     }
 
     public Candidate findById(int id) {
-        Candidate result = new Candidate();
-        for (Candidate candidate: candidates.values()) {
-            if (candidate.getId() == id) {
-                result = candidate;
-            }
-        }
-        return result;
+        return candidates.get(id);
     }
 
     public void update(Candidate candidate) {
-        candidates.put(candidate.getId(), candidate);
+        candidates.replace(candidate.getId(), candidate);
     }
 }

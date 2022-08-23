@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dream.model.Post;
-import ru.job4j.dream.model.PostStore;
+import ru.job4j.dream.store.PostStore;
 
 @Controller
 public class PostController {
@@ -21,7 +21,7 @@ public class PostController {
 
     @GetMapping("/formAddPost")
     public String addPost(Model model) {
-        model.addAttribute("posts", new Post(1, "1", "1", "1-2"));
+        model.addAttribute("posts", new Post(1, "name"));
         return "addPost";
     }
 
