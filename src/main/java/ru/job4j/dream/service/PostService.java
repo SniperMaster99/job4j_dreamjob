@@ -23,4 +23,12 @@ public class PostService {
     public void add(Post post) {
         store.create(post);
     }
+
+    public Post findById(int id) {
+        return store.findById(id);
+    }
+
+    public void update(Post post) {
+        store.update(post);
+    }
 }
