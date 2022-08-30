@@ -9,10 +9,10 @@ import java.util.Collection;
 
 @ThreadSafe
 @Service
-public class CandidateSerivce {
+public class CandidateService {
     private final CandidateStore store;
 
-    public CandidateSerivce(CandidateStore store) {
+    public CandidateService(CandidateStore store) {
         this.store = store;
     }
 
@@ -22,5 +22,13 @@ public class CandidateSerivce {
 
     public void add(Candidate candidate) {
         store.create(candidate);
+    }
+
+    public Candidate findById(int id) {
+        return store.findById(id);
+    }
+
+    public void update(Candidate candidate) {
+        store.update(candidate);
     }
 }

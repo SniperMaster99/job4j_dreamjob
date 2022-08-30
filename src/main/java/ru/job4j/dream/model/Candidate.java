@@ -9,15 +9,25 @@ public class Candidate {
     private String name;
     private String desc;
     private String date;
+    private byte[] photo;
 
-    public Candidate(int id, String name, String desc, String date) {
+    public Candidate(int id, String name, String desc, String date, byte[] photo) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.date = date;
+        this.photo = photo;
     }
 
     public Candidate() {
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public int getId() {
