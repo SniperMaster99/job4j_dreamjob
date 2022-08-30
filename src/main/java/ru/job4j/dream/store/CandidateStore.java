@@ -1,5 +1,6 @@
 package ru.job4j.dream.store;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dream.model.Candidate;
 
 import java.util.Collection;
@@ -7,10 +8,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
-    private static AtomicInteger count = new AtomicInteger(0);
-
+    private final AtomicInteger count = new AtomicInteger(0);
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     public CandidateStore() {
@@ -25,7 +26,8 @@ public class CandidateStore {
     }
 
     public void create(Candidate candidate) {
-        candidates.putIfAbsent(count.incrementAndGet(), candidate);
+        candidate.setId(count.incrementAndGet());
+        candidates.putIfAbsent(candidate.getId(), candidate);
     }
 
     public Candidate findById(int id) {
