@@ -12,16 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ThreadSafe
 @Repository
 public class CandidateStore {
-    private static final CandidateStore INST = new CandidateStore();
     private final AtomicInteger count = new AtomicInteger(0);
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
-
-    public CandidateStore() {
-    }
-
-    public static CandidateStore instOf() {
-        return INST;
-    }
 
     public Collection<Candidate> findAll() {
         return candidates.values();
