@@ -19,7 +19,8 @@ public class Post implements Serializable {
         this.visible = visible;
     }
 
-    public Post() { }
+    public Post() {
+    }
 
     public Post(int id, String name) {
         this.id = id;
