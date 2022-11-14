@@ -42,7 +42,7 @@ public class CandidateController {
                                   @RequestParam("file") MultipartFile file) throws IOException {
         candidate.setPhoto(file.getBytes());
         candidateService.add(candidate);
-        return "redirect:/candidate";
+        return "redirect:/candidates";
     }
 
     @GetMapping("/formUpdateCandidate/{candidateId}")
