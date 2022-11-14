@@ -7,14 +7,14 @@ import java.util.Objects;
 public class Candidate {
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private String date;
     private byte[] photo;
 
     public Candidate(int id, String name, String desc, String date, byte[] photo) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.description = desc;
         this.date = date;
         this.photo = photo;
     }
@@ -47,11 +47,11 @@ public class Candidate {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public String getDate() {
