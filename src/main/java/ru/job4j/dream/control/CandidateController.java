@@ -37,7 +37,7 @@ public class CandidateController {
         return "addCandidates";
     }
 
-    @GetMapping("/createCandidate")
+    @PostMapping("/createCandidate")
     public String createCandidate(@ModelAttribute Candidate candidate,
                                   @RequestParam("file") MultipartFile file) throws IOException {
         candidate.setPhoto(file.getBytes());
