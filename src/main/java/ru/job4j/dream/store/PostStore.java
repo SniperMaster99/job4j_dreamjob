@@ -2,6 +2,7 @@ package ru.job4j.dream.store;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
+import ru.job4j.dream.model.City;
 import ru.job4j.dream.model.Post;
 
 import java.util.Collection;
@@ -30,6 +31,10 @@ public class PostStore {
 
     public void update(Post post) {
         posts.replace(post.getId(), post);
+    }
+
+    public String findByCity(int id) {
+       return posts.get(id).getCity().getName();
     }
 
 }
