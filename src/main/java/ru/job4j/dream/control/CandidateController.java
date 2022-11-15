@@ -54,7 +54,7 @@ public class CandidateController {
     @PostMapping("/updateCandidate")
     public String updateCandidate(@ModelAttribute Candidate candidate) {
         candidateService.update(candidate);
-        return "redirect:/candidate";
+        return "redirect:/candidates";
     }
 
     @GetMapping("/photoCandidate/{candidateId}")

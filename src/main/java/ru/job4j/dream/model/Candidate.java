@@ -11,10 +11,10 @@ public class Candidate {
     private String date;
     private byte[] photo;
 
-    public Candidate(int id, String name, String desc, String date, byte[] photo) {
+    public Candidate(int id, String name, String description, String date, byte[] photo) {
         this.id = id;
         this.name = name;
-        this.description = desc;
+        this.description = description;
         this.date = date;
         this.photo = photo;
     }
@@ -46,12 +46,12 @@ public class Candidate {
         this.name = name;
     }
 
-    public String getDesc() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesc(String desc) {
-        this.description = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDate() {
