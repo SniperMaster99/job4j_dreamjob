@@ -1,21 +1,25 @@
 package ru.job4j.dream.model;
 
+import org.apache.tomcat.jni.Local;
+
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Post implements Serializable {
     private int id;
     private String name;
     private String description;
-    private String date;
+    private LocalDateTime date;
     private boolean visible;
     private City city;
 
-    public Post(int id, String name, String description, String date, boolean visible, City city) {
+    public Post(int id, String name, String description, boolean visible, City city) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.visible = visible;
         this.city = city;
     }
@@ -60,11 +64,19 @@ public class Post implements Serializable {
         this.city = city;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getDate() {
+    public void setDate() {
+        this.date = LocalDateTime.now();
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 
