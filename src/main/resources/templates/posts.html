@@ -67,7 +67,7 @@
                 </td>
                 <td><span th:text="${post.description}"></span></td>
                 <td><span th:text="${post.city.name}"></span></td>
-                <td><span th:text="${post.date}"></span></td>
+                <td><span th:text="${#temporals.format(post.date, 'dd-MM-yyyy HH:mm')}"></span></td>
             </tr>
             </tbody>
         </table>
