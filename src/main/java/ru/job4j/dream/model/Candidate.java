@@ -8,14 +8,14 @@ public class Candidate {
     private int id;
     private String name;
     private String description;
-    private String date;
+    private LocalDateTime date;
     private byte[] photo;
 
-    public Candidate(int id, String name, String description, String date, byte[] photo) {
+    public Candidate(int id, String name, String description, byte[] photo) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.photo = photo;
     }
 
@@ -54,12 +54,12 @@ public class Candidate {
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate() {
+        this.date = LocalDateTime.now();
     }
 
     @Override
